@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';  // Removed useNavigate
 import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
   const [error, setError] = useState('');
   
   const { login } = useAuth();
-  const navigate = useNavigate();
+  // Removed unused navigate
 
   const handleChange = (e) => {
     setFormData({

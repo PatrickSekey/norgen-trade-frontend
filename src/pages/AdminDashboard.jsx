@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { partnersAPI } from '../services/api';
 
@@ -16,11 +16,8 @@ const AdminDashboard = () => {
     rejected: 0
   });
 
-  useEffect(() => {
-    fetchPartners();
-  }, []);
-
-  const fetchPartners = async () => {
+  // Wrap fetchPartners with useCallback
+  const fetchPartners = useCallback(async () => {
     try {
       setLoading(true);
       const response = await partnersAPI.getAll();
@@ -32,7 +29,7 @@ const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []); // Empty dependency array since it doesn't depend on any props/state
 
   const calculateStats = (data) => {
     const total = data.length;
@@ -41,6 +38,11 @@ const AdminDashboard = () => {
     const rejected = data.filter(p => p.status === 'rejected').length;
     setStats({ total, pending, approved, rejected });
   };
+
+  // Now useEffect can safely include fetchPartners
+  useEffect(() => {
+    fetchPartners();
+  }, [fetchPartners]);
 
   const handleStatusChange = async (id, status) => {
     try {
@@ -295,7 +297,10 @@ const AdminDashboard = () => {
 
         {/* Quick Actions */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <button className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition text-left group">
+          <button 
+            onClick={() => alert('Add new partner feature coming soon!')}
+            className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition text-left group"
+          >
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition">
               <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -305,7 +310,10 @@ const AdminDashboard = () => {
             <p className="text-sm text-gray-600">Manually add a partner application</p>
           </button>
 
-          <button className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition text-left group">
+          <button 
+            onClick={() => alert('Export feature coming soon!')}
+            className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition text-left group"
+          >
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition">
               <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -315,7 +323,10 @@ const AdminDashboard = () => {
             <p className="text-sm text-gray-600">Download applications as CSV</p>
           </button>
 
-          <button className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition text-left group">
+          <button 
+            onClick={() => alert('Settings feature coming soon!')}
+            className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition text-left group"
+          >
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition">
               <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />

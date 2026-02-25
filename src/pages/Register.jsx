@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';  // Removed useNavigate
 import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
@@ -14,7 +14,7 @@ const Register = () => {
   const [passwordStrength, setPasswordStrength] = useState(0);
   
   const { register } = useAuth();
-  const navigate = useNavigate();
+  // Removed unused navigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -95,6 +95,14 @@ const Register = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleTermsClick = () => {
+    alert('Terms of Service will be available soon!');
+  };
+
+  const handlePrivacyClick = () => {
+    alert('Privacy Policy will be available soon!');
   };
 
   return (
@@ -242,13 +250,21 @@ const Register = () => {
               <div className="ml-3 text-sm">
                 <label htmlFor="terms" className="text-gray-600">
                   I agree to the{' '}
-                  <a href="#" className="text-accent hover:text-accent/80 font-medium">
+                  <button
+                    type="button"
+                    onClick={handleTermsClick}
+                    className="text-accent hover:text-accent/80 font-medium underline cursor-pointer"
+                  >
                     Terms of Service
-                  </a>{' '}
+                  </button>{' '}
                   and{' '}
-                  <a href="#" className="text-accent hover:text-accent/80 font-medium">
+                  <button
+                    type="button"
+                    onClick={handlePrivacyClick}
+                    className="text-accent hover:text-accent/80 font-medium underline cursor-pointer"
+                  >
                     Privacy Policy
-                  </a>
+                  </button>
                 </label>
               </div>
             </div>
