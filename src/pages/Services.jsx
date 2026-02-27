@@ -11,9 +11,7 @@ import {
   PhoneIcon,
   ChatBubbleLeftRightIcon,
   DocumentCheckIcon,
-  RocketLaunchIcon,
-  PaperAirplaneIcon,
-  CpuChipIcon
+  PaperAirplaneIcon
 } from '@heroicons/react/24/outline';
 
 const Services = () => {
