@@ -377,7 +377,7 @@ const Home = () => {
                Guangzhou Norgen Trade
               </h3>
               <p className="text-gray-400 text-sm">
-                Your trusted partner in international trade since 2010. 
+                Your trusted partner in international trade since 2021. 
                 Connecting businesses globally with quality products and reliable service.
               </p>
             </div>
