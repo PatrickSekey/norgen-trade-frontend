@@ -20,7 +20,7 @@ const Home = () => {
       icon: <GlobeAltIcon className="w-8 h-8" />,
       title: 'Global Network',
       description:
-        'Access markets across 50+ countries with our established trade routes and local partnerships.',
+        'Access markets across 20+ countries with our established trade routes and local partnerships.',
       color: 'text-blue-600',
       bgColor: 'bg-blue-100',
     },
@@ -52,7 +52,7 @@ const Home = () => {
       icon: <ChartBarIcon className="w-8 h-8" />,
       title: 'Market Insights',
       description:
-        'Access real-time market data and trends to make informed business decisions.',
+        'Provide real-time market data and trends for our potential customers to make informed business decisions.',
       color: 'text-red-600',
       bgColor: 'bg-red-100',
     },
@@ -67,10 +67,10 @@ const Home = () => {
   ];
 
   const stats = [
-    { label: 'Countries Served', value: '50+' },
-    { label: 'Active Partners', value: '1,200+' },
-    { label: 'Annual Trade Volume', value: '$200M+' },
-    { label: 'Years of Experience', value: '15+' },
+    { label: 'Countries Served', value: '20+' },
+    { label: 'Active Partners', value: '40+' },
+    { label: 'Annual Trade Volume', value: '$250K+' },
+    { label: 'Years of Experience', value: '4+' },
   ];
 
   const products = [
@@ -78,19 +78,22 @@ const Home = () => {
       name: 'Electronics',
       image:
         'https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&q=80&w=300',
-      items: ['Laptops', 'Smartphones', 'Accessories'],
+      items: ['Laptops', 'Tablets', 'Desktops', 'Cameras', 'Smartphones', 'Accessories'],
+      link: '/electronics',
     },
     {
       name: 'Vehicles',
       image:
         'https://images.unsplash.com/photo-1556189250-72ba954cfc2b?auto=format&fit=crop&q=80&w=300',
-      items: ['SUVs', 'Sedans', 'Commercial Vehicles'],
+      items: ['SUVs', 'Sedans', '3-Seated Keke', '10-Tire Trucks'],
+      link: '/vehicles',
     },
     {
       name: 'Fashion',
       image:
         'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=300',
       items: ['Sneakers', 'Apparel', 'Accessories'],
+      link: '/fashion',
     },
   ];
 
@@ -240,8 +243,9 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {products.map((product, i) => (
-              <div
+              <Link
                 key={i}
+                to={product.link || '#'}
                 className="relative overflow-hidden rounded-2xl group cursor-pointer"
               >
                 <img
@@ -264,7 +268,7 @@ const Home = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -278,7 +282,7 @@ const Home = () => {
               Why Choose Norgen Trade?
             </h2>
             <p className="text-gray-300 text-xl">
-              We provide comprehensive solutions for all your international trade needs
+              We provide comprehensive solutions for all your international trade needs and fast delivery on every routes.
             </p>
           </div>
 
@@ -370,7 +374,7 @@ const Home = () => {
             {/* Brand */}
             <div>
               <h3 className="text-2xl font-display font-bold text-accent mb-4">
-                Norgen Trade
+               Guangzhou Norgen Trade
               </h3>
               <p className="text-gray-400 text-sm">
                 Your trusted partner in international trade since 2010. 
@@ -458,7 +462,7 @@ const Home = () => {
           {/* Copyright */}
           <div className="border-t border-gray-800 mt-8 pt-6">
             <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-              <p>© {new Date().getFullYear()} Norgen International Trade. All rights reserved.</p>
+              <p>© {new Date().getFullYear()} Guangzhou Norgen International Trade. All rights reserved.</p>
               <div className="flex gap-6 mt-4 md:mt-0">
                 <Link to="/privacy" className="hover:text-accent transition">Privacy</Link>
                 <Link to="/terms" className="hover:text-accent transition">Terms</Link>

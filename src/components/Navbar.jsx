@@ -19,10 +19,10 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <span className="text-2xl font-display font-bold text-accent">
-              Norgen
+              Guangzhou Norgen
             </span>
             <span className="text-xl font-light hidden md:inline">
-              International Trade
+              International Trade Co. Ltd
             </span>
           </Link>
 

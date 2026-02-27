@@ -6,10 +6,14 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Onboarding from './pages/Onboarding';
+import Fashion from './pages/Fashion';
 import AdminDashboard from './pages/AdminDashboard';
 import PartnerDashboard from './pages/PartnerDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import OnboardingSuccess from './pages/OnboardingSuccess';
+import Electronics from './pages/Electronics';
+import Vehicles from './pages/Vehicles';
+import Services from './pages/Services';
 
 function App() {
   return (
@@ -20,7 +24,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/fashion" element={<Fashion />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/electronics" element={<Electronics />} />
+            <Route path="/vehicles" element={<Vehicles />} />
             <Route path="/onboarding/success" element={<OnboardingSuccess />} />
             <Route path="/onboarding" element={<Onboarding />} />
             
